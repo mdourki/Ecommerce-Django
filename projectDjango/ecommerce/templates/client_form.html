@@ -1,0 +1,16 @@
+{%extends 'base_client.html' %}
+{%block title%}Valider Commande{%endblock%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+    
+<div class="container">
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{form|crispy}}
+<input type="submit" class="btn btn-primary" value="Valider">
+</form>
+</div>
+
+
+{%endblock%}

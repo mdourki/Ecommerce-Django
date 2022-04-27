@@ -1,0 +1,52 @@
+{%extends 'base.html' %}
+{%block title%}Les produits{%endblock%}
+{%block content%}
+{% load bootstrap_icons %}
+    
+<div class="container">
+<a href="{% url 'productCreate' %}" class="btn btn-link">Nouveau produit</a>
+<div class="row">
+<div class="col-12">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Image</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Gamme</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for produit in produits %}
+    <tr class="table-active">
+      <th scope="row">{{produit.id}}</th>
+      <td>{{produit.nom_prdt}}</td>
+      <td>{{produit.description_prdt}}</td>
+      <td>{{produit.marque}}</td>
+      <td>{{produit.prix}}</td>
+      <td>{{produit.nombre_stock}}</td>
+      <td class="w-25"><img src="{{produit.image_prdt.url}}" class="img-fluid img-thumbnail"></td>
+      <td>{{produit.categorie.nom_cat}}</td>
+      <td>{{produit.gamme.nom_gam}}</td>
+      <td>
+               <a href="{% url 'productUpdate' produit.id%}">{% bs_icon 'pencil-fill' size='1.5em' %}</a>
+               <a href="{% url 'productDelete' produit.id%}">{% bs_icon 'trash-fill' size='1.5em' %}</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+{%endblock%}

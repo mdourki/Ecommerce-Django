@@ -1,0 +1,32 @@
+{%extends 'base.html' %}
+{%block title%}Les gammes{%endblock%}
+{%block content%}
+    
+<div class="container">
+<a href="{% url 'gammeCreate' %}" class="btn btn-link">Nouvelle Gamme</a>
+<div class="row">
+<div class="col-12">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for gamme in gammes %}
+    <tr class="table-active">
+      <td>{{gamme.nom_gam}}</td>
+      <td>{{gamme.description_gam}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+{%endblock%}

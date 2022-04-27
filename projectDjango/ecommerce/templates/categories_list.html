@@ -1,0 +1,32 @@
+{%extends 'base.html' %}
+{%block title%}Les catégories{%endblock%}
+{%block content%}
+    
+<div class="container">
+<a href="{% url 'categoryCreate' %}" class="btn btn-link">Nouvelle categorie</a>
+<div class="row">
+<div class="col-12">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for categorie in categories %}
+    <tr class="table-active">
+      <td>{{categorie.nom_cat}}</td>
+      <td>{{categorie.description_cat}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+{%endblock%}
